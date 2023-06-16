@@ -10,8 +10,6 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ name, url }) => {
   let urlString = url;
   urlString = urlString.slice(0, -1);
   urlString = urlString.substring(34);
-  console.log(urlString);
-
   return (
     <div className="card w-auto bg-base-100 shadow-xl group cursor-pointer h-full">
       <div
