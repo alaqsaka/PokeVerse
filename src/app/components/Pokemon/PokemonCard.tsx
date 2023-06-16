@@ -25,7 +25,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ name, url }) => {
             // fill
             height={200}
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${urlString}.svg`}
-            alt="Shoes"
+            alt="Pokemon"
             className="object-contain h-auto min-w-200 min-h-200 max-h-200"
           />
         </figure>
