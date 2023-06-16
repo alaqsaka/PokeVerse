@@ -9,9 +9,9 @@ import { Pokemon } from "./types";
 export default async function Home() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const page = searchParams.get("page") as unknown as number;
+  const page = searchParams.get("page");
 
-  const pokemons = await getPokemons(page == null ? 0 : page);
+  const pokemons = await getPokemons(page == null ? 0 : parseInt(page));
 
   console.log(pokemons.data);
 
@@ -25,7 +25,9 @@ export default async function Home() {
               disabled={!pokemons.data?.previous}
               onClick={() =>
                 router.push(
-                  `/?page=${pokemons.data?.previous !== null && page - 1}`
+                  `/?page=${
+                    pokemons.data?.previous !== null && parseInt(page) - 1
+                  }`
                 )
               }
             >
@@ -35,7 +37,7 @@ export default async function Home() {
               <button
                 className="join-item btn btn-outline"
                 onClick={() =>
-                  router.push(`/?page=${page == null ? 1 : page + 1}`)
+                  router.push(`/?page=${page == null ? 1 : parseInt(page) + 1}`)
                 }
               >
                 Next
