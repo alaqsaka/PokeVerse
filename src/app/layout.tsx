@@ -1,3 +1,5 @@
+import ClientOnly from "./components/ClientOnly";
+import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -15,6 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="retro">
+      <ClientOnly>
+        <Navbar />
+      </ClientOnly>
       <body className={inter.className}>{children}</body>
     </html>
   );
