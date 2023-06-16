@@ -24,11 +24,7 @@ export default async function Home() {
               className="join-item btn btn-outline"
               disabled={!pokemons.data?.previous}
               onClick={() =>
-                router.push(
-                  `/?page=${
-                    pokemons.data?.previous !== null && parseInt(page) - 1
-                  }`
-                )
+                router.push(`/?page=${page == null ? 1 : parseInt(page) - 1}`)
               }
             >
               Previous page
