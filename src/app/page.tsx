@@ -6,6 +6,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import PokemonCard from "./components/Pokemon/PokemonCard";
 import { Pokemon } from "./types";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const searchParams = useSearchParams();
   const router = useRouter();
