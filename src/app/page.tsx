@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import PokemonCard from "./components/Pokemon/PokemonCard";
 import { Pokemon } from "./types";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "auto";
 
 export default async function Home() {
   const searchParams = useSearchParams();
@@ -14,8 +14,6 @@ export default async function Home() {
   const page = searchParams.get("page");
 
   const pokemons = await getPokemons(page == null ? 0 : parseInt(page));
-
-  console.log(pokemons.data);
 
   return (
     <main>
