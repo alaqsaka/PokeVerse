@@ -7,38 +7,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 import PokemonCard from "./components/Pokemon/PokemonCard";
 import { Pokemon } from "./types";
 
-function makeQueryClient() {
-  const fetchMap = new Map<string, Promise<any>>();
-  return function queryClient<QueryResult>(
-    name: string,
-    query: () => Promise<QueryResult>
-  ): Promise<QueryResult> {
-    if (!fetchMap.has(name)) {
-      fetchMap.set(name, query());
-    }
-    return fetchMap.get(name)!;
-  };
-}
-
-const queryClient = makeQueryClient();
-
-export default function Home() {
+export default async function Home() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const page = searchParams.get("page");
-  const pokemons = use(
-    queryClient("pokemon", () =>
-      fetch(
-        `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${
-          page == null ? 0 : parseInt(page) * 10
-        }`
-      ).then((res) => res.json())
-    )
-  );
 
-  console.log("pokemonn ", pokemons);
-
-  // const pokemons = await getPokemons(page == null ? 0 : parseInt(page));
+  const pokemons = await getPokemons(page == null ? 0 : parseInt(page));
 
   return (
     <main>
@@ -83,7 +57,7 @@ export default function Home() {
         gap-8
       "
         >
-          {pokemons.results.map((pokemon: Pokemon) => {
+          {pokemons.data?.results.map((pokemon: Pokemon) => {
             return (
               <div key={pokemon.name}>
                 <PokemonCard name={pokemon.name} url={pokemon.url} />
