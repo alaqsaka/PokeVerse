@@ -2,18 +2,42 @@
 
 import getPokemons from "./actions/getPokemons";
 import Container from "./components/Container";
+import { use, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import PokemonCard from "./components/Pokemon/PokemonCard";
 import { Pokemon } from "./types";
 
-export const dynamic = "auto";
+function makeQueryClient() {
+  const fetchMap = new Map<string, Promise<any>>();
+  return function queryClient<QueryResult>(
+    name: string,
+    query: () => Promise<QueryResult>
+  ): Promise<QueryResult> {
+    if (!fetchMap.has(name)) {
+      fetchMap.set(name, query());
+    }
+    return fetchMap.get(name)!;
+  };
+}
 
-export default async function Home() {
+const queryClient = makeQueryClient();
+
+export default function Home() {
+  const pokemons = use(
+    queryClient("pokemon", () =>
+      fetch("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0").then((res) =>
+        res.json()
+      )
+    )
+  );
+
+  console.log("pokemonn ", pokemons);
+
   const searchParams = useSearchParams();
   const router = useRouter();
   const page = searchParams.get("page");
 
-  const pokemons = await getPokemons(page == null ? 0 : parseInt(page));
+  // const pokemons = await getPokemons(page == null ? 0 : parseInt(page));
 
   return (
     <main>
@@ -54,7 +78,7 @@ export default async function Home() {
         gap-8
       "
         >
-          {pokemons.data?.results.map((pokemon: Pokemon) => {
+          {pokemons.results.map((pokemon: Pokemon) => {
             return (
               <div key={pokemon.name}>
                 <PokemonCard name={pokemon.name} url={pokemon.url} />
