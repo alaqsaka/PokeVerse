@@ -7,30 +7,38 @@ import { useRouter, useSearchParams } from "next/navigation";
 import PokemonCard from "./components/Pokemon/PokemonCard";
 import { Pokemon } from "./types";
 
-async function getData(page: number) {
-  const res = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${page * 10}}`
-  );
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-
-  // Recommendation: handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
+function makeQueryClient() {
+  const fetchMap = new Map<string, Promise<any>>();
+  return function queryClient<QueryResult>(
+    name: string,
+    query: () => Promise<QueryResult>
+  ): Promise<QueryResult> {
+    if (!fetchMap.has(name)) {
+      fetchMap.set(name, query());
+    }
+    return fetchMap.get(name)!;
+  };
 }
 
-export default async function Home() {
+const queryClient = makeQueryClient();
+
+export default function Home() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const page = searchParams.get("page");
-  // const pokemons = await getPokemons(page == null ? 0 : parseInt(page));
-  const data = await getData(page == null ? 0 : parseInt(page));
+  const pokemons = use(
+    queryClient("pokemon", () =>
+      fetch(
+        `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${
+          page == null ? 0 : parseInt(page) * 10
+        }`
+      ).then((res) => res.json())
+    )
+  );
 
-  console.log("pokemon data ", data);
+  console.log("pokemonn ", pokemons);
+
+  // const pokemons = await getPokemons(page == null ? 0 : parseInt(page));
 
   return (
     <main>
@@ -39,22 +47,22 @@ export default async function Home() {
           <div className="flex justify-between">
             <button
               className="join-item btn btn-outline"
-              disabled={!data?.previous}
+              disabled={!pokemons.data?.previous}
               onClick={() => {
                 router.push(`/?page=${page == null ? 1 : parseInt(page) - 1}`);
-                router.refresh();
+                // router.refresh();
               }}
             >
               Previous page
             </button>
-            {data?.next !== null && (
+            {pokemons.data?.next !== null && (
               <button
                 className="join-item btn btn-outline"
                 onClick={() => {
                   router.push(
                     `/?page=${page == null ? 1 : parseInt(page) + 1}`
                   );
-                  router.refresh();
+                  // router.refresh();
                 }}
               >
                 Next
@@ -75,7 +83,7 @@ export default async function Home() {
         gap-8
       "
         >
-          {data?.results.map((pokemon: Pokemon) => {
+          {pokemons.results.map((pokemon: Pokemon) => {
             return (
               <div key={pokemon.name}>
                 <PokemonCard name={pokemon.name} url={pokemon.url} />
