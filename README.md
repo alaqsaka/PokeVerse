@@ -44,37 +44,10 @@ https://youtu.be/yG97527fFSQ
 - It has good Core Web Vitals scores ✅
 - The web app is SEO-friendly as it follows the best practices for SEO ✅
 - Fully Responsive ✅
-![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/2734768d-e612-4015-9952-fa081d492720)
+![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/4fb82332-82ff-46e5-9429-e240ae1eec66)
+
 
 
 ## Screenshots
--Pokemon list page (with pagination) Laptop
-![Pokemon list page (with pagination) Laptop](https://github.com/alaqsaka/PokeVerse/assets/40936981/2527cea7-9669-4da5-83ba-4b7d63150289)
-
--Pokemon list page (with pagination) Phone
-![Pokemon list page (with pagination) Phone](https://github.com/alaqsaka/PokeVerse/assets/40936981/8d70fbf9-373a-42e5-b414-b542a429631f)
-
-- Pokemon list page (with pagination) Tablet
-![Pokemon list page (with pagination) Tablet](https://github.com/alaqsaka/PokeVerse/assets/40936981/2080e473-481f-4a0d-9202-4d4e7208019a)
-
-- Pokemon Detail page
-![Pokemon Detail page](https://github.com/alaqsaka/PokeVerse/assets/40936981/caa14704-cfff-40ba-a949-f0ee9eb21af2)
-![Pokemon Detail page](https://github.com/alaqsaka/PokeVerse/assets/40936981/ffbeec44-38bb-4a39-869e-dd7ed4688943)
-
-- Pokemon Detail page phone
-- ![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/5f792a3d-0438-4699-bed4-bf499ffc9718)
-- ![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/51bcec0c-1d9f-486a-a0b9-32354ce7f9cd)
-
-- Pokemon detail page tablet
-![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/120f0905-90e5-4ce2-8e9e-4193ec29e0a7)
-![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/82efe5a7-e61c-4a7b-aa29-91c64ec9a8e0)
-
-
-- Owned Pokemon Page
-![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/724adc10-f492-4179-8370-3057dcfa5767)
-
-- Owned pokemon page phone
-![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/dff9a7fc-7709-4bef-b5ca-99157cf75488)
-
-- Owned pokemon page tablet
-![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/5610b348-0034-4fed-823c-ba40b0d7eed3)
+Screenshots can be found here: 
+https://drive.google.com/drive/folders/1GSBuIiNC9ccE9wzRhf2JC9n5RRdXocL4?usp=sharing
