@@ -1,5 +1,6 @@
 import getPokemonById from "@/app/actions/getPokemonById";
 import Container from "@/app/components/Container";
+import CatchPokemon from "@/app/components/Pokemon/CatchPokemon";
 import Image from "next/image";
 import React from "react";
 
@@ -51,7 +52,7 @@ const PokemonPage = async ({ params }: { params: IParams }) => {
         <div>
           <h2 className="text-xl font-bold">About</h2>
           {/* Versions */}
-          <h3 className="text-lg font-bold">Version</h3>
+          <h3 className="text-lg font-bold mt-10">Version</h3>
           <div className="grid gap-4 grid-cols-2 md:grid-cols-3 text-center">
             <div className="card w-full bg-base-100 shadow-xl">
               <div className="card-body items-center">
@@ -78,7 +79,7 @@ const PokemonPage = async ({ params }: { params: IParams }) => {
           </div>
           {/* Version */}
           {/* Stats */}
-          <div className="mt-2">
+          <div className="mt-10">
             <h3 className="text-lg font-bold">Stats</h3>
             <div>
               {pokemon.data.stats.map((stat) => (
@@ -92,7 +93,7 @@ const PokemonPage = async ({ params }: { params: IParams }) => {
                       <p className="capitalize">{stat.base_stat}</p>
                     </div>
                     <progress
-                      className="progress progress-success w-full"
+                      className="progress progress-primary w-full"
                       value={stat.base_stat}
                       max="100"
                     ></progress>
@@ -102,6 +103,20 @@ const PokemonPage = async ({ params }: { params: IParams }) => {
             </div>
           </div>
           {/* Stats */}
+
+          {/* Catch Pokemon */}
+
+          <div className="mt-10">
+            <h3 className="text-lg font-bold">
+              Catch {pokemon.data.species.name}
+            </h3>
+          </div>
+
+          <CatchPokemon
+            pokemon={pokemon.data.species}
+            img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${params.id}.svg`}
+          />
+          {/* Catch Pokemon */}
         </div>
       </div>
     </Container>
