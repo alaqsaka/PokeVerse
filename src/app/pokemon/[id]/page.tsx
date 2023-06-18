@@ -112,6 +112,7 @@ const PokemonPage = async ({ params }: { params: IParams }) => {
 
           <CatchPokemon
             pokemon={pokemon.data.species}
+            id={params.id}
             img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${params.id}.svg`}
           />
           {/* Catch Pokemon */}

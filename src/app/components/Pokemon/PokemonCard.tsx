@@ -4,23 +4,31 @@ import { useRouter } from "next/navigation";
 
 interface PokemonCardProps {
   name: string;
-  url: string;
+  url: string | number;
+  onAction?: (id: string) => void;
+  actionLabel?: string;
 }
 
-const PokemonCard: React.FC<PokemonCardProps> = ({ name, url }) => {
+const PokemonCard: React.FC<PokemonCardProps> = ({
+  name,
+  url,
+  onAction,
+  actionLabel,
+}) => {
   let urlString = url;
-  urlString = urlString.slice(0, -1);
-  urlString = urlString.substring(34);
+  if (typeof url === "string") {
+    urlString = urlString.slice(0, -1);
+    urlString = urlString.substring(34);
+  }
+
   const router = useRouter();
   return (
-    <div
-      className="card w-auto bg-base-100 shadow-xl group cursor-pointer h-full"
-      onClick={() => router.push(`/pokemon/${urlString}`)}
-    >
+    <div className="card w-auto bg-base-100 shadow-xl group cursor-pointer h-full">
       <div
         className="
         flex flex-col gap-2 w-full h-full
     "
+        onClick={() => router.push(`/pokemon/${urlString}`)}
       >
         <figure className="bg-slate-100 h-full p-4">
           <Image
@@ -36,6 +44,13 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ name, url }) => {
           <h2 className="card-title">{name}</h2>
         </div>
       </div>
+      {onAction && actionLabel && (
+        <div>
+          <button onClick={onAction} className="btn btn-primary w-full">
+            {actionLabel}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

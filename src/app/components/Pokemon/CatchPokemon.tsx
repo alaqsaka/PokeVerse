@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Loader from "../Loader";
 import Lottie from "lottie-react";
 import pokeballAnimation from "../../../../public/lf20_iwmd6pyr.json";
 
 interface CatchPokemonProps {
   pokemon?: Pokemon;
   img: string;
+  id: number;
 }
 
 interface Pokemon {
@@ -16,14 +16,13 @@ interface Pokemon {
   url: string;
 }
 
-const CatchPokemon: React.FC<CatchPokemonProps> = ({ pokemon, img }) => {
+const CatchPokemon: React.FC<CatchPokemonProps> = ({ pokemon, img, id }) => {
   const [success, setSuccess] = useState(null);
   const [loading, setloading] = useState(false);
 
   // Check list of users pokemon in local storage
   let usersPokemon = JSON.parse(localStorage.getItem("usersPokemons"));
 
-  console.log("users pokemons", usersPokemon);
   // If there is no list, create new list
   if (usersPokemon == null) {
     localStorage.setItem("usersPokemons", "[]");
@@ -32,9 +31,7 @@ const CatchPokemon: React.FC<CatchPokemonProps> = ({ pokemon, img }) => {
   // Check if pokemon already exist in localStorage
   function containsObject(obj: any, list: any) {
     var i;
-    for (i = 0; i < list.length; i++) {
-      console.log("list i", list[i]);
-      console.log("obj ", obj);
+    for (i = 0; i < list?.length; i++) {
       if (list[i].name == obj.name) {
         return true;
       }
@@ -50,13 +47,13 @@ const CatchPokemon: React.FC<CatchPokemonProps> = ({ pokemon, img }) => {
 
     if (isSuccess) {
       // Save to local storage
-      usersPokemon.push(pokemon);
+      const addedPokemon = { name: pokemon?.name, id: parseInt(id) };
+      usersPokemon.push(addedPokemon);
       localStorage.setItem("usersPokemons", JSON.stringify(usersPokemon));
     }
 
     setloading(true);
     setTimeout(() => {
-      console.log("loading ..");
       setSuccess(isSuccess);
       setloading(false);
     }, 3000);
