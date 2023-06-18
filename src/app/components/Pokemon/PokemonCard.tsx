@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface PokemonCardProps {
   name: string;
@@ -10,8 +11,12 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ name, url }) => {
   let urlString = url;
   urlString = urlString.slice(0, -1);
   urlString = urlString.substring(34);
+  const router = useRouter();
   return (
-    <div className="card w-auto bg-base-100 shadow-xl group cursor-pointer h-full">
+    <div
+      className="card w-auto bg-base-100 shadow-xl group cursor-pointer h-full"
+      onClick={() => router.push(`/pokemon/${urlString}`)}
+    >
       <div
         className="
         flex flex-col gap-2 w-full h-full

@@ -24,7 +24,6 @@ export default async function Home() {
               disabled={!pokemons.data?.previous}
               onClick={() => {
                 router.push(`/?page=${page == null ? 1 : parseInt(page) - 1}`);
-                // router.refresh();
               }}
             >
               Previous page
@@ -36,7 +35,6 @@ export default async function Home() {
                   router.push(
                     `/?page=${page == null ? 1 : parseInt(page) + 1}`
                   );
-                  // router.refresh();
                 }}
               >
                 Next
@@ -64,6 +62,31 @@ export default async function Home() {
               </div>
             );
           })}
+        </div>
+        <div>
+          <div className="flex justify-between mt-4">
+            <button
+              className="join-item btn btn-outline"
+              disabled={!pokemons.data?.previous}
+              onClick={() => {
+                router.push(`/?page=${page == null ? 1 : parseInt(page) - 1}`);
+              }}
+            >
+              Previous page
+            </button>
+            {pokemons.data?.next !== null && (
+              <button
+                className="join-item btn btn-outline"
+                onClick={() => {
+                  router.push(
+                    `/?page=${page == null ? 1 : parseInt(page) + 1}`
+                  );
+                }}
+              >
+                Next
+              </button>
+            )}
+          </div>
         </div>
       </Container>
     </main>
