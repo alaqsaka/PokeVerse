@@ -1,4 +1,11 @@
+"use client";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 const Navbar = () => {
+  const router = useRouter();
+
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -7,7 +14,9 @@ const Navbar = () => {
         </a>
       </div>
       <div className="navbar-end">
-        <a className="btn bg-slate-100">For You Page</a>
+        <Link href="/my-pokemon" className="btn">
+          My Pokemons
+        </Link>
       </div>
     </div>
   );
