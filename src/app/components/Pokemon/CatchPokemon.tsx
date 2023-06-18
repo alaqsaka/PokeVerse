@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import Loader from "../Loader";
+import Lottie from "lottie-react";
+import pokeballAnimation from "../../../../public/lf20_iwmd6pyr.json";
 
 interface CatchPokemonProps {
   pokemon?: Pokemon;
@@ -17,9 +19,10 @@ interface Pokemon {
 const CatchPokemon: React.FC<CatchPokemonProps> = ({ pokemon, img }) => {
   const [success, setSuccess] = useState(null);
   const [loading, setloading] = useState(false);
-  const [showModal, setshowModal] = useState(true);
 
-  console.log(success);
+  // Check list of users pokemon in local storage
+  // If there is no list, create new list
+
   // Check if pokemon already exist in localStorage
 
   function catchPokemon() {
@@ -31,12 +34,16 @@ const CatchPokemon: React.FC<CatchPokemonProps> = ({ pokemon, img }) => {
       setSuccess(isSuccess);
       setloading(false);
     }, 3000);
+
+    if (success) {
+      // Save to local storage
+      // Spread the old list, insert newly catched pokemon
+    }
   }
 
   return (
     <>
       {/* Modal */}
-      {/* Open the modal using ID.showModal() method */}
       <button
         className="btn btn-primary w-full"
         onClick={() => window.my_modal_1.showModal()}
@@ -49,7 +56,14 @@ const CatchPokemon: React.FC<CatchPokemonProps> = ({ pokemon, img }) => {
             <h1 className="text-3xl font-bold">Catch {pokemon?.name}</h1>
 
             {loading ? (
-              <Loader />
+              //   <Loader />
+              <Lottie
+                animationData={pokeballAnimation}
+                loop={true}
+                // width={12}
+                // height={12}
+                sizes="120px"
+              />
             ) : (
               <Image
                 src={img}
