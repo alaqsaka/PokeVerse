@@ -56,13 +56,12 @@ const CatchPokemon: React.FC<CatchPokemonProps> = ({ pokemon, img }) => {
             <h1 className="text-3xl font-bold">Catch {pokemon?.name}</h1>
 
             {loading ? (
-              //   <Loader />
               <Lottie
                 animationData={pokeballAnimation}
                 loop={true}
-                // width={12}
-                // height={12}
-                sizes="120px"
+                style={{
+                  height: 120,
+                }}
               />
             ) : (
               <Image
