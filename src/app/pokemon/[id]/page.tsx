@@ -11,8 +11,6 @@ interface IParams {
 const PokemonPage = async ({ params }: { params: IParams }) => {
   const pokemon = await getPokemonById(params);
 
-  console.log(pokemon.data);
-
   return (
     <Container>
       <div className="grid gap-4 md:grid-cols-2 grid-cols-1 items-center">

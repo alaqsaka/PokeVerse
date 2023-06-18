@@ -21,24 +21,45 @@ const CatchPokemon: React.FC<CatchPokemonProps> = ({ pokemon, img }) => {
   const [loading, setloading] = useState(false);
 
   // Check list of users pokemon in local storage
+  let usersPokemon = JSON.parse(localStorage.getItem("usersPokemons"));
+
+  console.log("users pokemons", usersPokemon);
   // If there is no list, create new list
+  if (usersPokemon == null) {
+    localStorage.setItem("usersPokemons", "[]");
+  }
 
   // Check if pokemon already exist in localStorage
+  function containsObject(obj: any, list: any) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+      console.log("list i", list[i]);
+      console.log("obj ", obj);
+      if (list[i].name == obj.name) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  const pokomenExist = containsObject(pokemon, usersPokemon);
 
   function catchPokemon() {
     const randomNumber = Math.random();
     const isSuccess = randomNumber > 0.5 ? true : false;
+
+    if (isSuccess) {
+      // Save to local storage
+      usersPokemon.push(pokemon);
+      localStorage.setItem("usersPokemons", JSON.stringify(usersPokemon));
+    }
+
     setloading(true);
     setTimeout(() => {
       console.log("loading ..");
       setSuccess(isSuccess);
       setloading(false);
     }, 3000);
-
-    if (success) {
-      // Save to local storage
-      // Spread the old list, insert newly catched pokemon
-    }
   }
 
   return (
@@ -46,12 +67,13 @@ const CatchPokemon: React.FC<CatchPokemonProps> = ({ pokemon, img }) => {
       {/* Modal */}
       <button
         className="btn btn-primary w-full"
+        disabled={pokomenExist}
         onClick={() => window.my_modal_1.showModal()}
       >
-        Start Catching!
+        {pokomenExist ? "You already catched this pokemon." : "Start Caching!"}
       </button>
-      <dialog id="my_modal_1" className="modal">
-        <form method="dialog" className="modal-box">
+      <dialog id="my_modal_1" className="modal px-10">
+        <form method="dialog" className="modal-box w-full max-w-full ">
           <div className="mt-10 flex flex-col items-center gap-5">
             <h1 className="text-3xl font-bold">Catch {pokemon?.name}</h1>
 
