@@ -50,7 +50,7 @@ const PokemonPage = async ({ params }: { params: IParams }) => {
         <div>
           <h2 className="text-xl font-bold">About</h2>
           {/* Versions */}
-          <h3 className="text-lg font-bold mt-10">Version</h3>
+          <h3 className="text-lg font-bold mt-3">Version</h3>
           <div className="grid gap-4 grid-cols-2 md:grid-cols-3 text-center">
             <div className="card w-full bg-base-100 shadow-xl">
               <div className="card-body items-center">
@@ -117,6 +117,48 @@ const PokemonPage = async ({ params }: { params: IParams }) => {
           />
           {/* Catch Pokemon */}
         </div>
+      </div>
+
+      <h2 className="text-xl font-bold mt-2">More Details</h2>
+      <div className="">
+        <div className="">
+          {/* Abilities */}
+          <h3 className="text-lg font-bold mt-3">Abilities</h3>
+          <div className="flex gap-4 flex-wrap">
+            {pokemon.data.abilities.map((ability) => (
+              <>
+                <div className="">
+                  <div className="card w-fit bg-base-100 shadow-xl">
+                    <div className="card-body">
+                      <div className="card-title text-sm">
+                        {ability.ability.name}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ))}
+          </div>
+          {/* Abilities */}
+        </div>
+        {/* Moves */}
+        <div>
+          <h3 className="text-lg font-bold mt-3">Moves</h3>
+          <div className="flex gap-4 flex-wrap">
+            {pokemon.data.moves.map((move) => (
+              <>
+                <div className="">
+                  <div className="card w-fit bg-base-100 shadow-xl">
+                    <div className="card-body">
+                      <div className="card-title text-sm">{move.move.name}</div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ))}
+          </div>
+        </div>
+        {/* Moves */}
       </div>
     </Container>
   );

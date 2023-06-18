@@ -25,8 +25,6 @@ const MyPokemon = () => {
   }
 
   const handleDelete = (name: string) => {
-    console.log("handle Delete");
-    console.log(name);
     setUsersPokemon(usersPokemon.filter((pokemon) => pokemon.name != name));
     localStorage.setItem(
       "usersPokemons",

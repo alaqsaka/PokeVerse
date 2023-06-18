@@ -63,7 +63,7 @@ const CatchPokemon: React.FC<CatchPokemonProps> = ({ pokemon, img, id }) => {
     <>
       {/* Modal */}
       <button
-        className="btn btn-primary w-full"
+        className="btn btn-primary w-full mt-3"
         disabled={pokomenExist}
         onClick={() => window.my_modal_1.showModal()}
       >
