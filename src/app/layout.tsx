@@ -1,4 +1,5 @@
 import ClientOnly from "./components/ClientOnly";
+import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
 import { Plus_Jakarta_Sans } from "next/font/google";
@@ -24,6 +25,7 @@ export default function RootLayout({
         <Navbar />
       </ClientOnly>
       <body className={plusJakartaSans.className}>{children}</body>
+      <Footer />
     </html>
   );
 }
