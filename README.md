@@ -4,6 +4,12 @@ Purpose of the project:
 
 Introducing PokeVerse: Your go-to source for essential Pokémon information. Discover details on Pokémon species and types. Get insights into their abilities and moves.Happy exploring! 
 
+Home Assignment for Frontend Engineer Internship
+
+
+## Demo
+
+Insert gif or link to demo
 
 ## Tech Stack
 
@@ -14,8 +20,6 @@ Introducing PokeVerse: Your go-to source for essential Pokémon information. Dis
 - TailwindCSS (DaisyUI)
 - Axios
 - Lottie React (lottie-react)
-
-
 
 ## Installation
 - Clone this repository
@@ -34,6 +38,14 @@ Introducing PokeVerse: Your go-to source for essential Pokémon information. Dis
 - Pokemon list page (with pagination)
 - Pokemon detail page (catching a pokemon)
 - Owned Pokemon page (Show list of pokemons users catched, and able to release the catched pokemons)
+- Fully Responsive
+
+## Nice to have 
+- It has good Core Web Vitals scores ✅
+- The web app is SEO-friendly as it follows the best practices for SEO ✅
+- Fully Responsive ✅
+![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/2734768d-e612-4015-9952-fa081d492720)
+
 
 ## Screenshots
 -Pokemon list page (with pagination) Laptop
