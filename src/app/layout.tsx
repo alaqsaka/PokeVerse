@@ -25,7 +25,9 @@ export default function RootLayout({
         <Navbar />
       </ClientOnly>
       <body className={plusJakartaSans.className}>{children}</body>
-      <Footer />
+      <ClientOnly>
+        <Footer />
+      </ClientOnly>
     </html>
   );
 }
