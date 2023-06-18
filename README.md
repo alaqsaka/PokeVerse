@@ -9,7 +9,7 @@ Home Assignment for Frontend Engineer Internship
 
 ## Demo
 
-Insert gif or link to demo
+https://youtu.be/yG97527fFSQ
 
 ## Tech Stack
 
