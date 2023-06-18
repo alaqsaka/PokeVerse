@@ -1,11 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 const Navbar = () => {
-  const router = useRouter();
-
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">

@@ -15,7 +15,7 @@ const PokemonPage = async ({ params }: { params: IParams }) => {
 
   return (
     <Container>
-      <div className="grid gap-4 md:grid-cols-2 grid-cols-1">
+      <div className="grid gap-4 md:grid-cols-2 grid-cols-1 items-center">
         <div>
           {/* Pokemon name & base experience */}
           <div className="flex items-center justify-center gap-2">
