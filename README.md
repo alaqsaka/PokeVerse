@@ -54,8 +54,8 @@ Introducing PokeVerse: Your go-to source for essential Pokémon information. Dis
 - ![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/51bcec0c-1d9f-486a-a0b9-32354ce7f9cd)
 
 - Pokemon detail page tablet
-![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/ffb82c94-9a48-4cbf-a3e2-790c71d14e71)
-![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/8a0e6d9d-cc5b-4e29-8198-77460478e014)
+![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/120f0905-90e5-4ce2-8e9e-4193ec29e0a7)
+![image](https://github.com/alaqsaka/PokeVerse/assets/40936981/82efe5a7-e61c-4a7b-aa29-91c64ec9a8e0)
 
 
 - Owned Pokemon Page
